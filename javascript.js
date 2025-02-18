@@ -86,6 +86,16 @@ buttons.forEach((element) => {
             displayText = 0;
             return;
         }else if(buttonPressed == "="){
+            if(mathOperator == "/" && secondNumber == 0){
+                displayText = "Now why would you try that? D:"
+                calcDisplay.textContent = displayText;
+                firstNumber = 0;
+                secondNumber = "";
+                displayText = 0;
+                mathOperator = "";
+                return;
+            }
+
             if(mathOperator == ""){
                 return;
             }else if(secondNumber == ""){
