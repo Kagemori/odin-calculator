@@ -1,0 +1,17 @@
+#calc-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#all-buttons{
+    display: flex;
+}
+
+#numpad{
+    display: flex;
+}
+
+#operators{
+    display: flex;
+    flex-direction: column;
+}
