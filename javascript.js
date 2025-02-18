@@ -1,6 +1,7 @@
 let firstNumber = 0;
 let mathOperator = "";
 let secondNumber = 0;
+let displayText = 11037;
 
 function operate(num1, operation, num2){
     if(operation == "+"){
@@ -40,3 +41,6 @@ console.log("Add: " + firstNumber + " + " + secondNumber + " = " + operate(first
 console.log("Subtract: " + firstNumber + " - " + secondNumber + " = " + operate(firstNumber,"-",secondNumber));
 console.log("Multiply: " + firstNumber + " * " + secondNumber + " = " + operate(firstNumber,"*",secondNumber));
 console.log("Divide: " + firstNumber + " / " + secondNumber + " = " + operate(firstNumber,"/",secondNumber));
+
+const calcDisplay = document.querySelector("#display");
+calcDisplay.textContent = displayText;
