@@ -1,17 +1,33 @@
 #calc-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #all-buttons{
     display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    width: 80px;
+    height: 80px;
 }
 
 #numpad{
     display: flex;
+    flex-wrap: wrap;
+    width: 240px;
+    height:320px;
+    padding:10px;
 }
 
 #operators{
     display: flex;
     flex-direction: column;
+    width: 80px;
+    height: 480px;
 }
