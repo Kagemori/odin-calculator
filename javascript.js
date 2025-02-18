@@ -100,6 +100,7 @@ buttons.forEach((element) => {
                 return;
             }else if(secondNumber == ""){
                 displayText = operate(firstNumber,mathOperator,firstNumber);
+                displayText = Math.round(displayText * 100) / 100;
                 calcDisplay.textContent = displayText;
                 firstNumber = displayText;
                 mathOperator = "";
@@ -107,6 +108,7 @@ buttons.forEach((element) => {
                 return;
             }else{
                 displayText = operate(firstNumber,mathOperator,secondNumber);
+                displayText = Math.round(displayText * 100) / 100;
                 calcDisplay.textContent = displayText;
                 firstNumber = displayText;
                 mathOperator = "";
