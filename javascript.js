@@ -34,13 +34,95 @@ function calcDivide(num1, num2){
     return (num1 / num2);
 }
 
-firstNumber = prompt("Input first number: ");
-secondNumber = prompt("Input second number: ");
-
-console.log("Add: " + firstNumber + " + " + secondNumber + " = " + operate(firstNumber,"+",secondNumber));
-console.log("Subtract: " + firstNumber + " - " + secondNumber + " = " + operate(firstNumber,"-",secondNumber));
-console.log("Multiply: " + firstNumber + " * " + secondNumber + " = " + operate(firstNumber,"*",secondNumber));
-console.log("Divide: " + firstNumber + " / " + secondNumber + " = " + operate(firstNumber,"/",secondNumber));
-
 const calcDisplay = document.querySelector("#display");
 calcDisplay.textContent = displayText;
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach((element) => {
+    element.addEventListener("click", () => {
+        buttonPressed = element.textContent;
+
+        if(buttonPressed == "C"){
+            firstNumber = 0;
+            secondNumber = "";
+            displayText = 0;
+            mathOperator = "";
+            calcDisplay.textContent = displayText;
+            return;
+        }else if(buttonPressed == "+/-"){
+            if(mathOperator == ""){
+                firstNumber = firstNumber * (-1);
+                displayText = firstNumber;
+                calcDisplay.textContent = displayText;
+                return;
+            }else{
+                secondNumber = secondNumber * (-1);
+                displayText = secondNumber;
+                calcDisplay.textContent = displayText;
+                return;
+            }
+        }else if(buttonPressed == "."){
+            if(mathOperator == ""){
+                if(firstNumber % 1 !== 0){
+                    return;
+                }else{
+                    firstNumber += buttonPressed;
+                    displayText += buttonPressed;
+                    calcDisplay.textContent = displayText;
+                    return;
+                }
+            }else{
+                if(secondNumber % 1 !== 0){
+                    return;
+                }else{
+                    secondNumber += buttonPressed;
+                    displayText += buttonPressed;
+                    calcDisplay.textContent = displayText;
+                    return;
+                }
+            }
+        }else if(buttonPressed == "/" || buttonPressed == "*" || buttonPressed == "-" || buttonPressed == "+"){
+            mathOperator = buttonPressed;
+            displayText = 0;
+            return;
+        }else if(buttonPressed == "="){
+            if(mathOperator == ""){
+                return;
+            }else if(secondNumber == ""){
+                displayText = operate(firstNumber,mathOperator,firstNumber);
+                calcDisplay.textContent = displayText;
+                firstNumber = displayText;
+                mathOperator = "";
+                secondNumber = "";
+                return;
+            }else{
+                displayText = operate(firstNumber,mathOperator,secondNumber);
+                calcDisplay.textContent = displayText;
+                firstNumber = displayText;
+                mathOperator = "";
+                secondNumber = "";
+                return;
+            }
+        }
+
+        if(mathOperator == ""){
+            if(displayText === 0){
+                firstNumber = buttonPressed;
+                displayText = buttonPressed;
+            }else{
+                firstNumber += buttonPressed;
+                displayText += buttonPressed;
+            }
+            calcDisplay.textContent = displayText;
+        }else{
+            if(displayText === 0){
+                secondNumber = buttonPressed;
+                displayText = buttonPressed;
+            }else{
+                secondNumber += buttonPressed;
+                displayText += buttonPressed;
+            }
+            calcDisplay.textContent = displayText;
+        }
+    })
+})
