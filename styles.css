@@ -5,6 +5,11 @@
     align-items: center;
 }
 
+#display{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 90px;
+}
+
 #all-buttons{
     display: flex;
     padding: 10px;
